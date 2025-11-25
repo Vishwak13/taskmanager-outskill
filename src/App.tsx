@@ -1,27 +1,22 @@
+import { useState } from 'react';
+import Home from './pages/Home';
+import Login from './pages/Login';
+
+export type Page = 'home' | 'login' | 'signup' | 'dashboard';
+
 function App() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-400 via-blue-300 to-cyan-200 flex items-center justify-center px-6 py-12">
-      <div className="max-w-2xl w-full text-center space-y-16">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white drop-shadow-lg tracking-tight">
-          Welcome to My Task Manager
-        </h1>
+  const [currentPage, setCurrentPage] = useState<Page>('home');
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-          <button className="bg-white hover:bg-gray-50 text-blue-600 font-semibold text-xl py-6 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-200">
-            Login
-          </button>
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'login':
+        return <Login onNavigate={setCurrentPage} />;
+      default:
+        return <Home onNavigate={setCurrentPage} />;
+    }
+  };
 
-          <button className="bg-white hover:bg-gray-50 text-blue-600 font-semibold text-xl py-6 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-200">
-            Signup
-          </button>
-
-          <button className="bg-white hover:bg-gray-50 text-blue-600 font-semibold text-xl py-6 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-200">
-            Go to Dashboard
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+  return renderPage();
 }
 
 export default App;
