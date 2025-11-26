@@ -28,12 +28,19 @@ export default function Home({ onNavigate }: HomeProps) {
           </button>
 
           <button
-            onClick={() => onNavigate('createTask')}
+            onClick={() => onNavigate('dashboard')}
             className="bg-white hover:bg-gray-50 text-blue-600 font-semibold text-xl py-6 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-200"
           >
-            Go to Dashboard
+            Dashboard
           </button>
         </div>
+
+        <button
+          onClick={() => onNavigate('createTask')}
+          className="bg-white hover:bg-gray-50 text-blue-600 font-semibold text-xl py-6 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-200"
+        >
+          New Task
+        </button>
       </div>
     </div>
   );
