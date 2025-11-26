@@ -3,8 +3,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import CreateTask from './pages/CreateTask';
 
-export type Page = 'home' | 'login' | 'signup' | 'dashboard';
+export type Page = 'home' | 'login' | 'signup' | 'dashboard' | 'createTask';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -17,6 +18,8 @@ function App() {
         return <Signup onNavigate={setCurrentPage} />;
       case 'dashboard':
         return <Dashboard onNavigate={setCurrentPage} />;
+      case 'createTask':
+        return <CreateTask onNavigate={setCurrentPage} />;
       default:
         return <Home onNavigate={setCurrentPage} />;
     }
